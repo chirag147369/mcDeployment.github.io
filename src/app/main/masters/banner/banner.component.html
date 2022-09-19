@@ -1,0 +1,120 @@
+<div class="match-height">
+
+    <div class="card card-congratulation-medal ml-5 mr-5">
+        <h3 class="card-title addCategoryTitle">Add Slide</h3>
+
+        <div class="card-body">
+            <div class="row">
+                <div class="col-xl-6 col-md-6 col-12 mb-1">
+                    <div class="form-group">
+                        <label for="basicInput" class="catFieldsLabel">Slide Name</label> <span
+                            class="requiredStar">*</span>
+                        <input type="text" class="form-control" id="basicInput" placeholder="Enter Slide Name" />
+                    </div>
+                </div>
+                <div class="col-xl-6 col-md-6 col-12">
+                    <div class="form-group">
+                        <label for="helperText" class="catFieldsLabel">Order Indexing</label> <span
+                            class="requiredStar">*</span>
+                        <input type="number" id="helperText" class="form-control" />
+                    </div>
+                </div>
+                <div class="col-xl-12 col-md-12 col-12">
+                    <div class="form-group">
+                        <label for="disabledInput" class="catFieldsLabel">Slide/Banner Image</label> <span
+                            class="requiredStar">*</span>
+                        <input type="file" class="form-control" style="height: 3rem;" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="buttonsOuterDiv">
+                <button type="button" class="btn" appRippleEffect
+                    style="background-color:#01a9ac; color: #fff;">Save</button>
+                <button type="button" class="btn" appRippleEffect
+                    style="background-color:#fe5d70; color: #fff;">Clear</button>
+                <button type="button" class="btn" appRippleEffect
+                    style="background-color:#2dcee3; color: #fff;">Exit</button>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col-lg-12 col-12">
+        <div class="card card-company-table">
+            
+            <div>
+            <h3 class="card-title catTableHeader">Slide List</h3>
+            </div>
+
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>S.No</th>
+                                <th>Slide Icon</th>
+                                <th>Slide Name</th>
+                                <th>Order Indexing</th>
+                                <th>Active Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <!-- <tbody *ngFor="let user of this.usersData; let i = index"> -->
+                            <!-- <tr>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div>
+                                            <div class="font-weight-bolder">{{ i + 1 }}</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <span *ngIf="user.isAdmin == true">Admin </span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <span>{{ user.firstName }} {{ user.lastName }}</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <span>{{ user.mobileNumber }}</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <span *ngIf="user.isActive == true"
+                                            class="badge badge-pill badge-light-primary mr-1">Active</span>
+                                        <span *ngIf="user.isActive == false"
+                                            class="badge badge-pill badge-light-warning mr-1">In-Active</span>
+                                    </div>
+                                </td>
+
+                                <td class="overflow-hidden">
+                                    <div ngbDropdown container="body">
+                                        <button type="button" class="btn btn-sm hide-arrow" ngbDropdownToggle
+                                            data-toggle="dropdown">
+                                            <i appDataFeather="more-vertical"></i>
+                                        </button>
+                                        <div ngbDropdownMenu>
+                                             <a ngbDropdownItem href="javascript:void(0);"
+                            ><i appDataFeather="edit-2" class="mr-50"></i
+                            ><span>Edit</span></a
+                          > 
+                                            <a ngbDropdownItem href="javascript:void(0);" (click)="deleteUser(user)"><i
+                                                    appDataFeather="trash" class="mr-50"></i><span>Delete</span></a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr> -->
+                        <!-- </tbody> -->
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

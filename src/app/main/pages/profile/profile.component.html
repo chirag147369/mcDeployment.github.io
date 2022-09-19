@@ -1,0 +1,250 @@
+<div class="content-wrapper">
+  <div class="content-body">
+    <!-- content-header component -->
+    <app-content-header [contentHeader]="contentHeader"></app-content-header>
+
+    <div id="user-profile">
+      <!-- profile header -->
+      <div class="row">
+        <div class="col-12">
+          <div class="card profile-header mb-2">
+            <!-- profile cover photo -->
+            <img
+              class="card-img-top"
+              [src]="data.profileData.header.coverImg"
+              alt="User Profile Image"
+            />
+            <!--/ profile cover photo -->
+
+            <div class="position-relative">
+              <!-- profile picture -->
+              <div class="profile-img-container d-flex align-items-center">
+                <div class="profile-img">
+                  <img
+                    [src]="data.profileData.header.avatar"
+                    class="rounded img-fluid"
+                    alt="Card image"
+                  />
+                </div>
+                <!-- profile title -->
+                <div class="profile-title ml-3">
+                  <h2 class="text-white">
+                    {{ data.profileData.header.username }}
+                  </h2>
+                  <p class="text-white">
+                    {{ data.profileData.header.designation }}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- tabs pill -->
+            <div class="profile-header-nav">
+              <!-- navbar -->
+              <nav
+                class="navbar navbar-expand-md navbar-light justify-content-end justify-content-md-between w-100"
+              >
+                <button
+                  class="btn btn-icon navbar-toggler"
+                  type="button"
+                  data-target="#navbarSupportedContent"
+                  aria-controls="navbarSupportedContent"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation"
+                  (click)="toggleMenu = !toggleMenu"
+                  appRippleEffect
+                >
+                  <i appDataFeather="align-justify" class="font-medium-5"></i>
+                </button>
+
+                <!-- collapse  -->
+                <div
+                  class="collapse navbar-collapse"
+                  id="navbarSupportedContent"
+                  [ngbCollapse]="toggleMenu"
+                >
+                  <div
+                    class="profile-tabs d-flex justify-content-end flex-wrap mt-1 mt-md-0"
+                  >
+                    <!-- <ul class="nav nav-pills mb-0">
+                      <li class="nav-item">
+                        <a class="nav-link font-weight-bold active" href="javascript:void(0)">
+                          <span class="d-none d-md-block">Feed</span>
+                          <i appDataFeather="rss" class="d-block d-md-none"></i>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link font-weight-bold" href="javascript:void(0)">
+                          <span class="d-none d-md-block">About</span>
+                          <i appDataFeather="info" class="d-block d-md-none"></i>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link font-weight-bold" href="javascript:void(0)">
+                          <span class="d-none d-md-block">Photos</span>
+                          <i appDataFeather="image" class="d-block d-md-none"></i>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link font-weight-bold" href="javascript:void(0)">
+                          <span class="d-none d-md-block">Friends</span>
+                          <i appDataFeather="users" class="d-block d-md-none"></i>
+                        </a>
+                      </li>
+                    </ul> -->
+                    <!-- edit button -->
+                    <button class="btn btn-primary" appRippleEffect>
+                      <i appDataFeather="edit" class="d-block d-md-none"></i>
+                      <span class="font-weight-bold d-none d-md-block"
+                        >Edit</span
+                      >
+                    </button>
+                  </div>
+                </div>
+                <!--/ collapse  -->
+              </nav>
+              <!--/ navbar -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--/ profile header -->
+
+      <!-- profile info section -->
+      <section id="profile-info">
+        <div class="row">
+          <!-- left profile info section -->
+          <div class="col-lg-12 col-12 order-2 order-lg-1">
+            <!-- about -->
+            <div class="card">
+              <div class="card-body">
+                <h5 class="mb-75">About</h5>
+                <p class="card-text">
+                  {{ data.profileData.userAbout.about }}
+                </p>
+                <div class="mt-2">
+                  <h5 class="mb-75">Joined:</h5>
+                  <p class="card-text">
+                    {{ data.profileData.userAbout.joined }}
+                  </p>
+                </div>
+                <div class="mt-2">
+                  <h5 class="mb-75">Lives:</h5>
+                  <p class="card-text">
+                    {{ data.profileData.userAbout.lives }}
+                  </p>
+                </div>
+                <div class="mt-2">
+                  <h5 class="mb-75">Email:</h5>
+                  <p class="card-text">
+                    {{ data.profileData.userAbout.email }}
+                  </p>
+                </div>
+                <div class="mt-2">
+                  <h5 class="mb-50">Website:</h5>
+                  <p class="card-text mb-0">
+                    {{ data.profileData.userAbout.website }}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!--/ about -->
+
+            <!-- suggestion pages -->
+            <!-- <div class="card">
+              <div class="card-body profile-suggestion">
+                <h5 class="mb-2">Suggested Pages</h5>
+                <div
+                  class="d-flex justify-content-start align-items-center"
+                  [class.mb-1]="
+                    data.profileData.suggestedPages.length - 1 !==
+                    data.profileData.suggestedPages.indexOf(suggestedPagesRef)
+                  "
+                  *ngFor="
+                    let suggestedPagesRef of data.profileData.suggestedPages
+                  "
+                >
+                  <div class="avatar mr-1">
+                    <img
+                      [src]="suggestedPagesRef.avatar"
+                      alt="avatar img"
+                      height="40"
+                      width="40"
+                    />
+                  </div>
+                  <div class="profile-user-info">
+                    <h6 class="mb-0">{{ suggestedPagesRef.username }}</h6>
+                    <small class="text-muted">{{
+                      suggestedPagesRef.subtitle
+                    }}</small>
+                  </div>
+                  <div class="profile-star ml-auto">
+                    <i
+                      class="font-medium-3 fa"
+                      [ngClass]="{
+                        'fa-star text-warning':
+                          suggestedPagesRef.favorite === true,
+                        'fa-star-o': suggestedPagesRef.favorite !== true
+                      }"
+                    ></i>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+            <!--/ suggestion pages -->
+
+            <!-- twitter feed card -->
+            <!-- <div class="card">
+              <div class="card-body">
+                <h5>Twitter Feeds</h5>
+                <div
+                  class="profile-twitter-feed mt-2"
+                  *ngFor="let twitterFeedsRef of data.profileData.twitterFeeds"
+                >
+                  <div
+                    class="d-flex justify-content-start align-items-center mb-1"
+                  >
+                    <div class="avatar mr-1">
+                      <img
+                        [src]="twitterFeedsRef.imgUrl"
+                        alt="avatar img"
+                        height="40"
+                        width="40"
+                      />
+                    </div>
+                    <div class="profile-user-info">
+                      <h6 class="mb-0">{{ twitterFeedsRef.title }}</h6>
+                      <a href="javascript:void(0)">
+                        <small class="text-muted">{{
+                          twitterFeedsRef.id
+                        }}</small>
+                        <i appDataFeather="check-circle"></i>
+                      </a>
+                    </div>
+                    <div class="profile-star ml-auto">
+                      <i
+                        class="font-medium-3 fa"
+                        [ngClass]="{
+                          'fa-star text-warning':
+                            twitterFeedsRef.favorite === true,
+                          'fa-star-o': twitterFeedsRef.favorite !== true
+                        }"
+                      ></i>
+                    </div>
+                  </div>
+                  <p class="card-text mb-50">{{ twitterFeedsRef.desc }}</p>
+                  <a href="javascript:void(0)">
+                    <small>{{ twitterFeedsRef.tags }}</small>
+                  </a>
+                </div>
+              </div>
+            </div> -->
+            <!--/ twitter feed card -->
+          </div>
+          <!--/ left profile info section -->
+        </div>
+      </section>
+      <!--/ profile info section -->
+    </div>
+  </div>
+</div>

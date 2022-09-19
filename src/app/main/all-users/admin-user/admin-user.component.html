@@ -1,0 +1,110 @@
+<div class="row match-height">
+  <div class="container" style="margin-bottom: 1%">
+    <div class="row d-flex ml-0 align-items-center">
+      <div class="col-md-4">
+        <div class="row search">
+          <i
+            class="fa fa-search"
+            style="margin-top: 12px; margin-left: 93%; position: absolute"
+          ></i>
+          <!-- <input
+                type="text"
+                class="form-control"
+                placeholder="Search"
+                [(ngModel)]="searchText"
+              /> -->
+          <input type="text" class="form-control" placeholder="Search" />
+          <!-- <button class="btn btn-primary">Search</button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Company Table -->
+  <div class="col-lg-12 col-12">
+    <div class="card card-company-table">
+      <div class="card-body p-0">
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>S.No</th>
+                <th>User Role</th>
+                <th>Name</th>
+                <th>Mobile No</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let user of this.usersData; let i = index">
+              <tr>
+                <td>
+                  <div class="d-flex align-items-center">
+                    <div>
+                      <div class="font-weight-bolder">{{ i + 1 }}</div>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="d-flex align-items-center">
+                    <span *ngIf="user.isAdmin == true">Admin </span>
+                  </div>
+                </td>
+                <td>
+                  <div class="d-flex align-items-center">
+                    <span>{{ user.firstName }} {{ user.lastName }}</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="d-flex align-items-center">
+                    <span>{{ user.mobileNumber }}</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="d-flex align-items-center">
+                    <span
+                      *ngIf="user.isActive == true"
+                      class="badge badge-pill badge-light-primary mr-1"
+                      >Active</span
+                    >
+                    <span
+                      *ngIf="user.isActive == false"
+                      class="badge badge-pill badge-light-warning mr-1"
+                      >In-Active</span
+                    >
+                  </div>
+                </td>
+
+                <td class="overflow-hidden">
+                  <div ngbDropdown container="body">
+                    <button
+                      type="button"
+                      class="btn btn-sm hide-arrow"
+                      ngbDropdownToggle
+                      data-toggle="dropdown"
+                    >
+                      <i appDataFeather="more-vertical"></i>
+                    </button>
+                    <div ngbDropdownMenu>
+                      <!-- <a ngbDropdownItem href="javascript:void(0);"
+                        ><i appDataFeather="edit-2" class="mr-50"></i
+                        ><span>Edit</span></a
+                      > -->
+                      <a
+                        ngbDropdownItem
+                        href="javascript:void(0);"
+                        (click)="deleteUser(user)"
+                        ><i appDataFeather="trash" class="mr-50"></i
+                        ><span>Delete</span></a
+                      >
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <jw-pagination [items]="this.usersData" (changePage)="onChangePage($event)"></jw-pagination>
+</div>

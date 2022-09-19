@@ -1,0 +1,128 @@
+<div class="row" id="basic-table">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">Customer List</h4>
+      </div>
+      <div class="col-md-6 col-12">
+        <div class="d-flex justify-content-between align-items-center m-1">
+          <label class="d-flex align-items-center"
+            >Show
+            <select
+              class="form-control mx-25"
+              [(ngModel)]="selectedOption"
+              (change)="changePageSize($event)"
+            >
+              <option value="10">10</option>
+              <option value="25">25</option>
+              <option value="50">50</option>
+              <option value="100">100</option>
+            </select>
+            entries</label
+          >
+        </div>
+      </div>
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>S.No</th>
+              <th>Name</th>
+              <th>Mobile</th>
+              <th>Email</th>
+              <th>Address</th>
+              <th>Status</th>
+              <th>Verified</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let user of this.usersData; let i = index">
+            <tr>
+              <td>
+                <div class="d-flex align-items-center">
+                  <div>
+                    <div class="font-weight-bolder">{{ i + 1 }}</div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <span class="font-weight-bold"
+                  >{{ user.firstName }} {{ user.lastName }}</span
+                >
+              </td>
+              <td>{{ user.mobileNumber }}</td>
+              <td>{{ user.email }}</td>
+
+              <td>
+                <span *ngIf="user.address">
+                  {{ user.address?.houseNo }}, {{ user.address?.area }},{{
+                    user.address?.city
+                  }}
+                </span>
+              </td>
+              <td>
+                <span
+                  *ngIf="user.isActive == true"
+                  class="badge badge-pill badge-light-primary mr-1"
+                  >Active</span
+                >
+                <span
+                  *ngIf="user.isActive == false"
+                  class="badge badge-pill badge-light-warning mr-1"
+                  >Pending</span
+                >
+              </td>
+              <td>
+                <span
+                  *ngIf="user.isEmailVerified == true"
+                  class="badge badge-pill badge-light-primary mr-1"
+                  >Verified</span
+                >
+                <span
+                  *ngIf="user.isEmailVerified == false"
+                  class="badge badge-pill badge-light-warning mr-1"
+                  >Pending</span
+                >
+              </td>
+              <td class="overflow-hidden">
+                <div ngbDropdown container="body">
+                  <button
+                    type="button"
+                    class="btn btn-sm hide-arrow"
+                    ngbDropdownToggle
+                    data-toggle="dropdown"
+                  >
+                    <i appDataFeather="more-vertical"></i>
+                  </button>
+                  <div ngbDropdownMenu>
+                    <!-- <a ngbDropdownItem href="javascript:void(0);"
+                      ><i appDataFeather="edit-2" class="mr-50"></i
+                      ><span>Edit</span></a
+                    > -->
+                    <a
+                      ngbDropdownItem
+                      href="javascript:void(0);"
+                      (click)="deleteUser(user)"
+                      ><i appDataFeather="trash" class="mr-50"></i
+                      ><span>Delete</span></a
+                    >
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <!--/ Company Table -->
+  <!-- <pagination-controls
+    style="margin-left: 32%"
+    (pageChange)="pageChanged((page = $event))"
+  >
+  </pagination-controls>-->
+  <!-- <pagination-controls
+    style="margin-left: 32%"
+    (pageChange)="page = $event"
+  ></pagination-controls> -->
+</div>
